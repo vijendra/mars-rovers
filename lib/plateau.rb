@@ -11,7 +11,7 @@ class Plateau
   end
   
   def land_a_rover(rover)
-    raise Exception, 'Out of Plateau area' if rover.x > x || rover.y > y
+    raise Exception, 'Out of Plateau area' if rover.x > @x || rover.y > @y
     @rovers << rover
   end
   

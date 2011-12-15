@@ -1,26 +1,24 @@
-# This file is to show running solution of Mars Rover problem.
-Dir["lib/**/*.rb"].sort.each { |file| require(File.dirname(__FILE__) + "/"+ file) }
+require File.expand_path("../init.rb", __FILE__)
 
-puts "Setting cordinate as 5,5"
-@plateau = Plateau.new(Coordinate.new(5,5))
-puts "Now adding a rover with coordinates 1,2 and north direction and performing opeartions as 'LMLMLMLMM'"
-@plateau.add_rover(Rover.new(Coordinate.new(1, 2),
-                             Direction.north, Operation.new('LMLMLMLMM')))
-@plateau.start_rovers
-rovers = @plateau.rover_positions
-puts "My current position is #{rovers[0].current_position.to_s}"
-puts "My current direction is #{rovers[0].current_direction}"
+puts "Setting the plateau cordinate to 5,5"
+@plateau = Plateau.new('5 5')
 
-puts "==========================================================="
+puts "Adding a rover Rover_a with position 1 2 N to the plateau"
+@rover = Rover.new('1 2 N', @plateau)
+@plateau.land_a_rover(@rover)
 
-puts "Now another move"
-@plateau = Plateau.new(Coordinate.new(5,5))
-puts "Now adding a rover with coordinates 3,3 and east direction and performing opeartions as 'MMRMMRMRRM'"
-@plateau.add_rover(Rover.new(Coordinate.new(3, 3),
-                             Direction.east, Operation.new('MMRMMRMRRM')))
-@plateau.start_rovers
-rovers = @plateau.rover_positions
-puts "My current position is #{rovers[0].current_position.to_s}"
-puts "My current direction is #{rovers[0].current_direction}"
+puts "Giving instruction 'LMLMLMLMM' to the rover"
+@rover.process_instructions('LMLMLMLMM')
 
+puts "Rover_a's current position is #{@rover.current_position}"
+puts "========================================================="
+ 
+puts "Adding another rover rover_b with position 1 2 N to the same plateau"
+@rover = Rover.new('3 3 E', @plateau)
+@plateau.land_a_rover(@rover)
+
+puts "Giving instruction 'MMRMMRMRRM' to the rover"
+@rover.process_instructions('MMRMMRMRRM')
+
+puts "Rover_b's current position is #{@rover.current_position}"
 

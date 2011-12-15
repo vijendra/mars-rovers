@@ -8,7 +8,7 @@ Rake::TestTask.new do |t|
   t.verbose = true
 end
 
-desc "To run mars.rb file"
-task :run_me do
-  ruby "mars.rb"
+desc "To run the mars rover"
+task :run do
+  ruby "mars_rover.rb"
 end

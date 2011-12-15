@@ -16,13 +16,13 @@ describe Plateau do
   
   describe "rovers" do
     it "should be allowed to land" do
-      rover = Rover.new('1 2 N')
+      rover = Rover.new('1 2 N', @plateau)
       @plateau.land_a_rover(rover)
       @plateau.rovers.must_include(rover)
     end  
     
     it "should not be allowed to land, if out of boundary" do
-      rover = Rover.new('6 2 N')
+      rover = Rover.new('6 2 N', @plateau)
       begin
         @plateau.land_a_rover(rover)
       rescue Exception => e

@@ -1,10 +1,11 @@
 class Rover
-  attr_accessor :x, :y, :orientation
+  attr_accessor :x, :y, :orientation, :plateau
   
-  def initialize(position)
+  def initialize(position, plateau)
     @x = position.split[0].to_i
     @y = position.split[1].to_i
     @orientation = set_orientation(position.split[2]) 
+    @plateau = plateau
   end
   
   def process_instructions(instruction)
@@ -26,9 +27,13 @@ class Rover
   end
   
   def move_forward
-    new_coordinates = @orientation.move_forward
-    @x += new_coordinates[0] 
-    @y += new_coordinates[1] 
+    ordinates = @orientation.move_forward
+    if @x + ordinates[0] > @plateau.x || @x + ordinates[0] < 0 || @y + ordinates[1] > @plateau.y || @y + ordinates[1] < 0
+      raise Exception, 'On the edge of plateau. Not possible to move forward.' and return
+    end
+      
+    @x += ordinates[0] 
+    @y += ordinates[1] 
   end
  
   def current_position
@@ -43,7 +48,7 @@ class Rover
     return SouthFaced.new if cardinal_point == 'S'
     return EastFaced.new if cardinal_point == 'E'
     return WestFaced.new if cardinal_point == 'W'
-    raise 'Invalid orientation' #unless ['N', 'S', 'E', 'W'].include?(cardinal_point) #TODO handle this
+    raise Exception, 'Invalid orientation' #unless ['N', 'S', 'E', 'W'].include?(cardinal_point) #TODO handle this
   end  
   
   def current_orientation
