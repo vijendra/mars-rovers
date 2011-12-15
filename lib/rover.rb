@@ -27,13 +27,12 @@ class Rover
   end
   
   def move_forward
-    ordinates = @orientation.move_forward
-    if @x + ordinates[0] > @plateau.x || @x + ordinates[0] < 0 || @y + ordinates[1] > @plateau.y || @y + ordinates[1] < 0
-      raise Exception, 'On the edge of plateau. Not possible to move forward.' and return
+    coordinates = @orientation.move_forward
+    begin
+      move_possible?(coordinates)
+      @x += coordinates[0] 
+      @y += coordinates[1] 
     end
-      
-    @x += ordinates[0] 
-    @y += ordinates[1] 
   end
  
   def current_position
@@ -53,6 +52,13 @@ class Rover
   
   def current_orientation
     @orientation.class.to_s[0,1]
+  end
+  
+  #TODO check if this should be moved to some where else.
+  def move_possible?(ordinates)
+    if @x + ordinates[0] > @plateau.x || @x + ordinates[0] < 0 || @y + ordinates[1] > @plateau.y || @y + ordinates[1] < 0
+      raise Exception, 'On the edge of plateau. Not possible to move forward.'
+    end
   end
 end
 
