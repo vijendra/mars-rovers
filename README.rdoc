@@ -9,10 +9,11 @@ Run 'rake test' to run all unit and functional tests.
 Run 'rake run' to see the output
 
 = Solution description
-State pattern is used to handle rovers position and orientation.
+State pattern is used to handle rover position and orientation.
 
 = TODO
 Check if further refactoring is possible. For example, moving the position details of the rover to seperate position object
+Also before any movement, check if that movement is possible. There might be other rovers in the same position.
 
 == Problem statement 
 A squad of robotic rovers are to be landed by NASA on a plateau on Mars.

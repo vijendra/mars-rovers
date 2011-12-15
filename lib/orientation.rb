@@ -1,3 +1,4 @@
+#This class holds rover's current orientation. State pattern is used to manage orientation. Depending on the current orientation state, events will produce different output.
 class Orientation 
   def turn_left; end
   def turn_right; end
