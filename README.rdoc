@@ -2,7 +2,7 @@
 Problem statement is below.
 
 == Running tests
-Minitest is used as a testing framework. Minitest is a default testing framework in Ruby 1.9. Ruby 1.8 users must install minitest gem.
+Minitest is used as a testing framework. Minitest is the default testing framework in Ruby 1.9. Ruby 1.8 users must install minitest gem.
 Run 'rake test' to run all unit and functional tests.
 
 == Running the mars rover
@@ -10,6 +10,9 @@ Run 'rake run' to see the output
 
 = Solution description
 State pattern is used to handle rovers position and orientation.
+
+= TODO
+Check if further refactoring is possible. For example, moving the position details of the rover to seperate position object
 
 == Problem statement 
 A squad of robotic rovers are to be landed by NASA on a plateau on Mars.
