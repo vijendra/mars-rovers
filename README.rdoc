@@ -12,8 +12,9 @@ Run 'rake run' to see the output
 State pattern is used to handle rover position and orientation.
 
 = TODO
-Check if further refactoring is possible. For example, moving the position details of the rover to seperate position object
-Also before any movement, check if that movement is possible. There might be other rovers in the same position.
+* Check if further refactoring is possible. For example, moving the position details of the rover to seperate position object
+* Also before any movement, check if that movement is possible. There might be other rovers in the same position.
+* Validate all inputs before processing.
 
 == Problem statement 
 A squad of robotic rovers are to be landed by NASA on a plateau on Mars.
