@@ -2,6 +2,13 @@
 class Orientation 
   def turn_left; end
   def turn_right; end
+=begin  
+  def move_possible?((x, y, plateau, x_move, y_move)
+    if x + x_move > plateau.x || x + x_move < 0 || y + y_move > plateau.y || y + y_move < 0
+      raise Exception, 'On the edge of plateau. Not possible to move forward.'
+    end
+  end
+=end  
 end
 
 class NorthFaced < Orientation
@@ -16,6 +23,14 @@ class NorthFaced < Orientation
   def move_forward
     [0, 1]
   end
+  
+=begin  
+  def move_forward(position, plateau)
+    if move_possible?(position.x, position.y, plateau, 0, 1) 
+      position.y += 1
+    end
+  end
+=end  
 end
 
 class SouthFaced < Orientation

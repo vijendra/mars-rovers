@@ -33,5 +33,3 @@ describe Plateau do
   end
   
 end
-
-
